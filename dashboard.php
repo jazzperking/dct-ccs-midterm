@@ -1,42 +1,34 @@
 <?php
-// Include functions.php for session management and other functionalities
-require 'functions.php';
+include 'header.php';  // Include the header for session start and breadcrumbs
+include 'functions.php'; // Include functions for validation and other actions
 
-// Ensure the user is logged in before displaying the dashboard
-guard();
+guard(); // Protect the page to ensure only logged-in users can access
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body class="bg-light">
+<main>
     <div class="container py-5">
-       <!-- Logout Button in the upper-right corner -->
+        <!-- Logout Button in the upper-right corner -->
         <div class="d-flex justify-content-end">
             <a href="logout.php" class="btn btn-danger custom-logout">Logout</a>
         </div>
         <style>
-            .custom-logout {
-                margin-right: 100px; 
-            }
+        .custom-logout {
+            margin-right: 100px; 
+        }
         </style>
 
-        <!-- Welcome Message with additional space below -->
-        <div class="mb-5" style="text-align: left; margin-left: 95px; margin-top: -35px;">
+        <!-- Welcome Message -->
+        <div class="mb-4" style="text-align: left; margin-left: 95px; margin-top: -35px;">
             <h2 style="font-size: 28px;">Welcome to the System: <?= htmlspecialchars($_SESSION["email"]); ?></h2>
         </div>
-     
+
         <!-- Row for Add Subject and Register Student Cards -->
         <div class="row justify-content-center">
             <!-- Add a Subject Card -->
             <div class="col-md-5 mb-4">
                 <div class="card shadow-sm">
-                    <div class="card-header text-left">
+                    <div class="card-header text-left"> 
                         <h5>Add a Subject</h5>
                     </div>
                     <div class="card-body">
@@ -60,5 +52,8 @@ guard();
             </div>
         </div>
     </div>
-</body>
-</html>
+</main>
+
+<?php
+include 'footer.php';  // Include the footer
+?>
